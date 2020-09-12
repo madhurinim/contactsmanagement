@@ -1,0 +1,278 @@
+
+<% include partials/header %>
+<script> 
+
+var x=0;
+var p=0;
+var g=0;
+function hr(){
+    x+=1;
+    console.log(x);
+    var r=document.createElement("table");
+    var l=document.createElement("tr");
+     var m=document.createElement("td");
+    var y=document.createElement("INPUT");
+
+    y.setAttribute("type","text");
+    y.setAttribute("placeholder","addresstype");
+    y.setAttribute("name","addresstype"+x);
+    m.appendChild(y);
+    l.appendChild(m);
+    r.append(l);
+    var l=document.createElement("tr");
+     var m=document.createElement("td");
+
+    var y=document.createElement("INPUT");
+    y.setAttribute("type","text");
+    y.setAttribute("placeholder","address");
+    y.setAttribute("name","address"+x);
+    m.appendChild(y);
+    l.appendChild(m);
+    r.append(l);
+
+    var l=document.createElement("tr");
+     var m=document.createElement("td");
+    var y=document.createElement("INPUT");
+        
+    y.setAttribute("type","text");
+    y.setAttribute("placeholder","city");
+    y.setAttribute("name","city"+x);
+    m.appendChild(y);
+    l.appendChild(m);
+    r.append(l);
+    var l=document.createElement("tr");
+     var m=document.createElement("td");
+    var y=document.createElement("INPUT");
+        
+    y.setAttribute("type","text");
+    y.setAttribute("placeholder","state");
+       y.setAttribute("name","state"+x);
+    m.appendChild(y);
+    l.appendChild(m);
+    r.append(l);
+    var l=document.createElement("tr");
+     var m=document.createElement("td");
+    var y=document.createElement("INPUT");
+        
+    y.setAttribute("type","text");
+    y.setAttribute("placeholder","zip");
+    y.setAttribute("name","zip"+x);
+    m.appendChild(y);
+    l.appendChild(m);
+    r.append(l);
+    var l=document.createElement("tr");
+     var m=document.createElement("td");
+    var y=document.createElement("INPUT");
+    y.setAttribute("name","x");
+    y.setAttribute("value",x);
+    y.setAttribute("type","text");
+    m.appendChild(y);
+    l.appendChild(m);
+    r.appendChild(l);
+    document.getElementById("main").appendChild(r);
+    
+}
+function hs(){
+    p+=1;
+    var r=document.createElement("table");
+    var l=document.createElement("tr");
+     var m=document.createElement("td");
+    var y=document.createElement("INPUT");
+    
+    y.setAttribute("type","text");
+    y.setAttribute("placeholder","phonetype");
+    y.setAttribute("name","phonetype"+p);
+    m.appendChild(y);
+    l.appendChild(m);
+    r.append(l);
+    var l=document.createElement("tr");
+     var m=document.createElement("td");
+
+    var y=document.createElement("INPUT");
+    y.setAttribute("type","text");
+    y.setAttribute("placeholder","number");
+    y.setAttribute("name","number"+p);
+    m.appendChild(y);
+    l.appendChild(m);
+    r.append(l);
+
+    var l=document.createElement("tr");
+     var m=document.createElement("td");
+    var y=document.createElement("INPUT");
+        
+    y.setAttribute("type","text");
+    y.setAttribute("placeholder","areacode");
+    y.setAttribute("name","areacode"+p);
+    m.appendChild(y);
+    l.appendChild(m);
+    r.append(l);
+    var l=document.createElement("tr");
+     var m=document.createElement("td");
+    var y=document.createElement("INPUT");
+        
+    y.setAttribute("type","text");
+    y.setAttribute("placeholder","p");
+    y.setAttribute("name","p");
+    y.setAttribute("value",p);
+    m.appendChild(y);
+    l.appendChild(m);
+    r.append(l);
+
+     document.getElementById("mains").appendChild(r);
+     }
+     function fd()
+     {
+     g+=1;
+     console.log(g)
+     
+     var r=document.createElement("table");
+    var l=document.createElement("tr");
+     var m=document.createElement("td");
+    var y=document.createElement("INPUT");
+     y.setAttribute("type","text");
+    y.setAttribute("placeholder","datetype");
+    y.setAttribute("name","datetype"+g);
+    m.appendChild(y);
+    l.appendChild(m);
+    r.append(l);
+    var l=document.createElement("tr");
+     var m=document.createElement("td");
+
+    var y=document.createElement("INPUT");
+    y.setAttribute("type","date");
+    y.setAttribute("placeholder","date");
+    y.setAttribute("name","date"+g);
+    m.appendChild(y);
+    l.appendChild(m);
+    r.append(l);
+
+   
+    var l=document.createElement("tr");
+     var m=document.createElement("td");
+    var y=document.createElement("INPUT");
+        
+    y.setAttribute("type","text");
+    y.setAttribute("placeholder","g");
+    y.setAttribute("name","g");
+    y.setAttribute("value",g);
+    m.appendChild(y);
+    l.appendChild(m);
+    r.append(l);
+    
+        
+     document.getElementById("maind").appendChild(r);
+
+     }
+   
+</script>   
+
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-7">
+          <center> <h2>  CONTACT NAMES </h2></center>
+
+           <a  href="/search"  class="btn btn-info" > <i class="fas fa-search">SEARCH</i></a>
+            <table class="table table-bordered table-hover" bgcolor="lightblue">
+                <thead>
+
+                    <tr>
+                        <th>INDEX</th>
+                        <th>FIRSTNAME</th>
+                        <th>MIDDLENAME</th>
+                        <th>LASTNAME</th>
+                        <th>DELETE OR MODIFY</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(info) { %>
+                        <% for(let i=0 ; i< info.length ; i++) { %>
+                            <tr>
+                                <td><%= i+1 %></td>
+                                
+                                <td><%= info[i].fname %></td>
+                                <td><%= info[i].mname %></td>
+                                <td><%= info[i].lname %></td>
+                                <td>
+                                    <a href="/delete/<%= info[i].contactid %>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                                    <a href="/update/<%= info[i].contactid %>" class="btn btn-info" ><i class="far fa-edit"></i></a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+            
+        </div>
+          
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                    <h2 align='center' >  CONTACT FORM </h2>
+                        <form action="/add" method="POST" >
+                            <div class="form-group">
+                                <input type="text" name="fname" id="" placeholder="firstname" class="form-control"required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="mname" id="" placeholder="Middlename" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="lname" id="" placeholder="Lastname" class="form-control"required>
+                                  </div>
+                             
+                        <div class="form-group">
+                            <input type="text" name="addresstype" id="" placeholder="addresstype" class="form-control"required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="address" id="" placeholder="address" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="city" id="" placeholder="city" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="state" id="" placeholder="state" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="zip" id="" placeholder="zip" class="form-control">
+                        </div>
+                        
+                     
+                        <div class="form-group" id="main"></div>
+                        <div class="form-group">
+                            <input type="text" name="phonetype" id="" placeholder="phonetype" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="number" id="" placeholder="number" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="areacode" id="" placeholder="areacode" class="form-control">
+                        </div>
+                         
+                        <div class="form-group" id="mains"></div>
+                        <div class="form-group">
+                            <input type="text" name="datetype" id="" placeholder="datetype" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="date" id="" placeholder="date" class="form-control">
+                        </div>
+                        
+                        <div class="form-group" id="maind"></div>
+
+
+
+
+
+                             <center>
+                            <button type="submit" class="btn btn-primary">Insert</button></center>
+                        </form>
+                           <button onclick="hr()">add address</button>
+                            <button onclick="hs()">add phone</button>
+                            <button onclick="fd()">add date</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<% include partials/footer %>
